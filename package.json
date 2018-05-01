@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "helpers for codecept.js tests",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chrono-node": "^1.3.5"
+  }
 }

@@ -2,6 +2,7 @@
 // in this file you can append custom step methods to 'I' object
 const config = require('codeceptjs').config.get();
 const smartWait = config.helpers.WebDriverIO.smartWait;
+const assert = require('assert');
 
 function xpathTextEquals(text) {
     return `//*[text() = '${text}']`
@@ -18,7 +19,6 @@ module.exports = function () {
         // It is recommended to place a general 'login' function here.
 
         helpers: function () {
-
             return this.helpers
         },
 
@@ -27,6 +27,11 @@ module.exports = function () {
             this.click(selector)
         },
 
+        elementTextEquals: async function (selector, regexp) {
+            await this.waitForElement(selector, smartWait);
+            let elementText = this.grabTextFrom(selector);
+            assert.ok(new RegExp(regexp).test(elementText));
+        },
         seeText: function (text) {
             this.seeElement(xpathTextEquals(text));
         },

@@ -18,6 +18,13 @@ module.exports = function () {
         // Define custom steps here, use 'this' to access default methods of I.
         // It is recommended to place a general 'login' function here.
 
+        grabDateFrom: async function (selector) {
+            await this.waitForElement(selector, smartWait);
+            let elementText = this.grabTextFrom(selector);
+            let elementDate = chrono.parse(elementText)[0].text;
+            return new Date(elementDate);
+        },
+
         helpers: function () {
             return this.helpers
         },
@@ -32,6 +39,7 @@ module.exports = function () {
             let elementText = this.grabTextFrom(selector);
             assert.ok(new RegExp(regexp).test(elementText));
         },
+
         seeText: function (text) {
             this.seeElement(xpathTextEquals(text));
         },

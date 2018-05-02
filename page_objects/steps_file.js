@@ -18,6 +18,8 @@ module.exports = function () {
         // Define custom steps here, use 'this' to access default methods of I.
         // It is recommended to place a general 'login' function here.
 
+        assert: assert,
+
         grabDateFrom: async function (selector) {
             await this.waitForElement(selector, smartWait/1000);
             let elementText = this.grabTextFrom(selector);

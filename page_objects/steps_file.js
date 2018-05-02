@@ -19,7 +19,7 @@ module.exports = function () {
         // It is recommended to place a general 'login' function here.
 
         grabDateFrom: async function (selector) {
-            await this.waitForElement(selector, smartWait);
+            await this.waitForElement(selector, smartWait/1000);
             let elementText = this.grabTextFrom(selector);
             let elementDate = chrono.parse(elementText)[0].text;
             return new Date(elementDate);
@@ -29,13 +29,8 @@ module.exports = function () {
             return this.helpers
         },
 
-        open: function (url) {
-            this.waitForElement(selector, smartWait);
-            this.click(selector)
-        },
-
         elementTextEquals: async function (selector, regexp) {
-            await this.waitForElement(selector, smartWait);
+            await this.waitForElement(selector, smartWait/1000);
             let elementText = this.grabTextFrom(selector);
             assert.ok(new RegExp(regexp).test(elementText));
         },
@@ -49,7 +44,7 @@ module.exports = function () {
         },
 
         clickOn: function (selector) {
-            this.waitForElement(selector, smartWait);
+            this.waitForElement(selector, smartWait/1000);
             this.click(selector)
         },
 

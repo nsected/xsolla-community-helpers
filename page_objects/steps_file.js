@@ -23,7 +23,7 @@ module.exports = function () {
 
         grabDateFrom: async function (selector) {
             await this.waitForElement(selector, smartWait/1000);
-            let elementText = this.grabTextFrom(selector);
+            let elementText = await this.grabTextFrom(selector);
             let elementDate = chrono.parse(elementText[0])[0].text;
             return new Date(elementDate);
         },

@@ -32,6 +32,12 @@ module.exports = function () {
             return this.helpers
         },
 
+        seeTextEquals: async function (selector, regexp) {
+            await this.waitForElement(selector, smartWait/1000);
+            let elementText = this.grabTextFrom(selector);
+            assert.ok(new RegExp(regexp).test(elementText));
+        },
+
         elementTextEquals: async function (selector, regexp) {
             await this.waitForElement(selector, smartWait/1000);
             let elementText = this.grabTextFrom(selector);

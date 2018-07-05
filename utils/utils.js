@@ -2,6 +2,7 @@
 
 const chrono = require("chrono-node");
 const config = require('codeceptjs').config.get();
+const randomstring = require("randomstring");
 
 module.exports = {
     scroll_element_into_middle:
@@ -54,5 +55,9 @@ module.exports = {
         return a == b
             ? 0
             : (a < b ? 1 : -1);
+    },
+
+    randomString: function (options) {
+        return randomstring.generate(options);
     }
 };

@@ -29,8 +29,8 @@ module.exports = function () {
         },
 
         selectFirstDropdown: async function (selector) {
-            await I.clickOn(selector);
-            await I.clickOn(`${selector}/../../..//*[contains(@class, "xsui-dropdown__item")]`);
+            await this.clickOn(selector);
+            await this.clickOn(`${selector}/../../..//*[contains(@class, "xsui-dropdown__item")]`);
         },
 
         helpers: function () {

@@ -28,6 +28,11 @@ module.exports = function () {
             return new Date(elementDate);
         },
 
+        selectFirstDropdown: async function (selector) {
+            await I.clickOn(selector);
+            await I.clickOn(`${selector}/../../..//*[contains(@class, "xsui-dropdown__item")]`);
+        },
+
         helpers: function () {
             return this.helpers
         },
